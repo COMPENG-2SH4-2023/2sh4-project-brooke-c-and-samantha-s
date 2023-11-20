@@ -24,10 +24,10 @@ GameMechs::GameMechs(int boardX, int boardY)
 }
 
 // do you need a destructor?
-/*GameMechs::~GameMechs()
+GameMechs::~GameMechs()
 {
-    delete GameMechs[];
-}*/
+    delete[] myGM;
+}
 // i don't this that's right ^^ *need to double check
 
 
