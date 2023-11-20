@@ -55,7 +55,7 @@ int GameMechs::getBoardSizeY()
     return boardSizeY;
 }
 
-int GameMechs::getscore()
+int GameMechs::getScore()
 {
     return score;
 }
