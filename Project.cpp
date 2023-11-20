@@ -9,6 +9,8 @@ using namespace std;
 
 bool exitFlag;
 
+objPos playerPos;
+
 void Initialize(void);
 void GetInput(void);
 void RunLogic(void);
@@ -41,6 +43,8 @@ void Initialize(void)
     MacUILib_init();
     MacUILib_clearScreen();
 
+    playerPos.setObjPos(5, 11, '*');
+
     exitFlag = false;
 }
 
@@ -56,8 +60,9 @@ void RunLogic(void)
 
 void DrawScreen(void)
 {
-    MacUILib_clearScreen();    
+    MacUILib_clearScreen();  
 
+    MacUILib_printf("Object: <%d, %d> with %c", playerPos.x, playerPos.y, playerPos.symbol);
 }
 
 void LoopDelay(void)
