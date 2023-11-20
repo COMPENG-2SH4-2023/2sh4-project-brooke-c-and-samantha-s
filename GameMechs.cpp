@@ -14,7 +14,7 @@ GameMechs::GameMechs()
 
 GameMechs::GameMechs(int boardX, int boardY)
 {
-    input = NULL;
+    input = 0;
     exitFlag = false;
     loseFlag = false;
     score = 0;
@@ -55,7 +55,7 @@ int GameMechs::getBoardSizeY()
     return boardSizeY;
 }
 
-int GameMechs::getscore()
+int GameMechs::getScore()
 {
     return score;
 }
@@ -72,7 +72,7 @@ void GameMechs::setInput(char this_input)
 
 void GameMechs::clearInput()
 {
-    input = NULL;
+    input = 0;
 }
 
 void GameMechs::incrementScore()

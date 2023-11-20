@@ -10,7 +10,6 @@ using namespace std;
 #define DELAY_CONST 100000
 
 GameMechs* myGM;
-//bool exitFlag;
 
 objPos playerPos;
 
@@ -28,7 +27,7 @@ int main(void)
 
     Initialize();
 
-    while(exitFlag == false)  
+    while(myGm->getExitFlagStatus == false)  
     {
         GetInput();
         RunLogic();
