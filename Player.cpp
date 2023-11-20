@@ -7,13 +7,14 @@ Player::Player(GameMechs* thisGMRef)
     myDir = STOP;
 
     // more actions to be included
-    playerPos.setObjPos(getBoardSizeX()/2, getBoardSizeY()/2, '@');
+    playerPos.setObjPos(getBoardSizeX()/2, getBoardSizeY()/2, '*');
 }
 
 
 Player::~Player()
 {
     // delete any heap members here
+    delete myPlayer;
 }
 
 void Player::getPlayerPos(objPos &returnPos)

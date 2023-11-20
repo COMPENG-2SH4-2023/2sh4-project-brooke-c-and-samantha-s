@@ -3,7 +3,7 @@
 
 GameMechs::GameMechs()
 {
-    input = NULL;
+    input = 0;
     exitFlag = false;
     loseFlag = false;
     score = 0;
@@ -14,7 +14,7 @@ GameMechs::GameMechs()
 
 GameMechs::GameMechs(int boardX, int boardY)
 {
-    input = NULL;
+    input = 0;
     exitFlag = false;
     loseFlag = false;
     score = 0;
@@ -26,7 +26,7 @@ GameMechs::GameMechs(int boardX, int boardY)
 // do you need a destructor?
 GameMechs::~GameMechs()
 {
-    delete[] myGM;
+    delete myGM;
 }
 // i don't this that's right ^^ *need to double check
 
@@ -72,7 +72,7 @@ void GameMechs::setInput(char this_input)
 
 void GameMechs::clearInput()
 {
-    input = NULL;
+    input = 0;
 }
 
 void GameMechs::incrementScore()

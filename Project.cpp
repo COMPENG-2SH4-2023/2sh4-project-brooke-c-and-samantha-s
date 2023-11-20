@@ -13,6 +13,7 @@ GameMechs* myGM;
 //bool exitFlag;
 
 objPos playerPos;
+objPos* myPlayer;
 
 void Initialize(void);
 void GetInput(void);
@@ -48,7 +49,7 @@ void Initialize(void)
 
     myGM = new GameMechs(30 , 15);
     myPlayer = new Player(myGM);
-
+ 
 }
 
 void GetInput(void)
@@ -65,6 +66,17 @@ void DrawScreen(void)
 {
     MacUILib_clearScreen();  
 
+    for(i=0; i < getBoardSizeY(); i++){
+        for(j=0; j < getBoardSizeX(); j++){
+            if(i == playerPos.y && j == playerPos.x)
+                MacUILib_printf("%c", playerPos.symbol);
+            else if(i==0 || i==getBoardSizeY()-1 || j==0 || j==getBoardSizeX()-1)
+                MacUILib_printf("%c", '#');
+            else    
+                MacUILib_printf("%c", ' ');
+            
+        }
+        MacUILib_printf("\n");
 }
 
 void LoopDelay(void)
