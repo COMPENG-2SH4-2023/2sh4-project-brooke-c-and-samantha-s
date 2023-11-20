@@ -10,7 +10,7 @@ using namespace std;
 #define DELAY_CONST 100000
 
 GameMechs* myGM;
-//bool exitFlag;
+bool exitFlag;
 
 void Initialize(void);
 void GetInput(void);
