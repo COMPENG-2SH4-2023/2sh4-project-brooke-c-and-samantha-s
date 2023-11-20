@@ -47,17 +47,18 @@ void Initialize(void)
     MacUILib_clearScreen();
 
     myGM = new GameMechs(30 , 15);
+    myPlayer = new Player(myGM);
 
 }
 
 void GetInput(void)
 {
-    
+
 }
 
 void RunLogic(void)
 {
-    
+    myPlayer->updatePlayerDir();
 }
 
 void DrawScreen(void)
