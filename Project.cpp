@@ -12,6 +12,8 @@ using namespace std;
 GameMechs* myGM;
 bool exitFlag;
 
+objPos playerPos;
+
 void Initialize(void);
 void GetInput(void);
 void RunLogic(void);
@@ -60,7 +62,7 @@ void RunLogic(void)
 
 void DrawScreen(void)
 {
-    MacUILib_clearScreen();    
+    MacUILib_clearScreen();  
 
 }
 
