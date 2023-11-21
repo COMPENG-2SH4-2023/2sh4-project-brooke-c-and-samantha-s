@@ -28,7 +28,7 @@ int main(void)
 
     Initialize();
 
-    while(myGm->getExitFlagStatus == false)  
+    while(getExitFlagStatus() == false)  
     {
         GetInput();
         RunLogic();
@@ -58,24 +58,25 @@ void GetInput(void)
 
 void RunLogic(void)
 {
-    myPlayer->updatePlayerDir();
+    updatePlayerDir();
 }
 
 void DrawScreen(void)
 {
     MacUILib_clearScreen();  
 
-    for(i=0; i < getBoardSizeY(); i++){
-        for(j=0; j < getBoardSizeX(); j++){
+    for(int i=0; i < mainGameMechsRef->getBoardSizeY(); i++){
+        for(int j=0; j < mainGameMechsRef->getBoardSizeX(); j++){
             if(i == playerPos.y && j == playerPos.x)
                 MacUILib_printf("%c", playerPos.symbol);
-            else if(i==0 || i==getBoardSizeY()-1 || j==0 || j==getBoardSizeX()-1)
+            else if(i==0 || i==mainGameMechsRef->getBoardSizeY()-1 || j==0 || j==mainGameMechsRef->getBoardSizeX()-1)
                 MacUILib_printf("%c", '#');
             else    
                 MacUILib_printf("%c", ' ');
             
         }
         MacUILib_printf("\n");
+    }
 }
 
 void LoopDelay(void)
@@ -90,8 +91,8 @@ void CleanUp(void)
   
     MacUILib_uninit();
 
-    ~GameMechs();
+    //~GameMechs();
     delete myGM;
-    ~Player();
+    //~Player();
     delete myPlayer;
 }

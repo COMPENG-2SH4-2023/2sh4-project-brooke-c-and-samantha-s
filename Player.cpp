@@ -27,7 +27,7 @@ void Player::getPlayerPos(objPos &returnPos)
 void Player::updatePlayerDir()
 {
     // PPA3 input processing logic  
-    char input = getInput();
+    char input = mainGameMechsRef->getInput();
 
     switch(input)
     {
@@ -60,13 +60,13 @@ void Player::movePlayer()
         case LEFT: 
             playerPos.x--;
             if(playerPos.x < 1)
-                playerPos.x = getBoardSizeX() - 2;
+                playerPos.x = mainGameMechsRef->getBoardSizeX() - 2;
 
             break;
 
         case RIGHT:
             playerPos.x++;
-            if(playerPos.x > getBoardSizeX() - 2)
+            if(playerPos.x > mainGameMechsRef->getBoardSizeX() - 2)
                 playerPos.x = 1;
 
             break;
@@ -74,16 +74,15 @@ void Player::movePlayer()
         case UP:
             playerPos.y--;
             if(playerPos.y < 1)
-                playerPos.y = getBoardSizeY() - 2;
+                playerPos.y = mainGameMechsRef->getBoardSizeY() - 2;
 
             break;
 
         case DOWN:
             playerPos.y++;
-            if(playerPos.y > getBoardSizeY() - 2)
+            if(playerPos.y > mainGameMechsRef->getBoardSizeY() - 2)
                 playerPos.y = 1;
 
             break;
     }
 }
-
