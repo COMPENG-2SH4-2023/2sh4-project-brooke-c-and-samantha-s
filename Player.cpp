@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "GameMechs.h"
 
 
 Player::Player(GameMechs* thisGMRef)
@@ -7,14 +8,14 @@ Player::Player(GameMechs* thisGMRef)
     myDir = STOP;
 
     // more actions to be included
-    playerPos.setObjPos(getBoardSizeX()/2, getBoardSizeY()/2, '*');
+    playerPos.setObjPos(15, 10, '*');
 }
 
 
 Player::~Player()
 {
     // delete any heap members here
-    delete myPlayer;
+    //delete myPlayer;
 }
 
 void Player::getPlayerPos(objPos &returnPos)

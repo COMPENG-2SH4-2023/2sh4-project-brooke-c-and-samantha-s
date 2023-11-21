@@ -89,4 +89,9 @@ void CleanUp(void)
     MacUILib_clearScreen();    
   
     MacUILib_uninit();
+
+    ~GameMechs();
+    delete myGM;
+    ~Player();
+    delete myPlayer;
 }

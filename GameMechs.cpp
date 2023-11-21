@@ -26,7 +26,7 @@ GameMechs::GameMechs(int boardX, int boardY)
 // do you need a destructor?
 GameMechs::~GameMechs()
 {
-    delete myGM;
+    //delete myGM;
 }
 // i don't this that's right ^^ *need to double check
 
@@ -40,7 +40,7 @@ char GameMechs::getInput()
 {
     if(MacUILib_hasChar())
     {
-        input = MacUILib_getchar();
+        input = MacUILib_getChar();
     }
     return input;
 }
