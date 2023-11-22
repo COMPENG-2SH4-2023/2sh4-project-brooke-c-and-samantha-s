@@ -28,7 +28,6 @@ GameMechs::~GameMechs()
 {
     //delete myGM;
 }
-// i don't this that's right ^^ *need to double check
 
 
 bool GameMechs::getExitFlagStatus()
