@@ -3,7 +3,7 @@
 #include "objPos.h"
 #include "GameMechs.h"
 #include "Player.h"
-
+#include "Food.h"
 
 using namespace std;
 
@@ -13,6 +13,8 @@ GameMechs* myGM;
 
 objPos playerPos;
 Player* myPlayer;
+
+Food* myFood;
 
 void Initialize(void);
 void GetInput(void);
@@ -47,9 +49,8 @@ void Initialize(void)
 
     myGM = new GameMechs(30 , 15);
     
-    //playerPos.setObjPos(15, 7, '*');
     myPlayer = new Player(myGM);
- 
+    myFood = new Food(myGM);
 }
 
 void GetInput(void)
@@ -73,6 +74,8 @@ void DrawScreen(void)
         for(int j=0; j < myGM->getBoardSizeX(); j++){
             if(i == myPlayer->getPlayerY() && j == myPlayer->getPlayerX())
                 MacUILib_printf("%c", myPlayer->getPlayerS());
+            else if(i == myFood->getFoodY() && j == myFood->getFoodX())
+                MacUILib_printf("%c", myFood->getFoodSymbol());
             else if(i==0 || i==myGM->getBoardSizeY()-1 || j==0 || j==myGM->getBoardSizeX()-1)
                 MacUILib_printf("%c", '#');
             else    

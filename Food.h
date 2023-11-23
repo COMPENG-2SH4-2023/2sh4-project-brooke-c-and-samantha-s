@@ -2,22 +2,29 @@
 #define FOOD_H
 
 #include "objPos.h"
+#include "GameMechs.h"
 
 class Food
 {
     private:
         objPos foodPos;
-        GameMechs *FoodMech;
+        //GameMechs *FoodMech;
         int randX;
         int randY;
 
+        GameMechs* mainGameMechsRef;
+
     public:
-        Food();
+        Food(GameMechs* thisGMRef);
         ~Food();
 
-        generateFood(objPos blockOff);
-        getFoodPos(objPos &returnPos);
-}
+        void generateFood(objPos blockOff);
+        void getFoodPos(objPos &returnPos);
+
+        int getFoodX();
+        int getFoodY();
+        char getFoodSymbol();
+};
 
 
-#endif FOOD_H
+#endif

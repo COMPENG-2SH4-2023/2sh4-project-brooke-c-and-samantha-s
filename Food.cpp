@@ -2,22 +2,23 @@
 #include "GameMechs.h"
 #include "objPos.h"
 
-Food::Food()
+Food::Food(GameMechs* thisGMRef)
 {
+    mainGameMechsRef = thisGMRef;
     foodPos.setObjPos(randX, randY, 'x');
 
 }
 
 Food::~Food()
 {
-
+    //delete Food;
 }
 
 void Food::generateFood(objPos blockOff)
 {
     do{
-        randX = (rand() % FoodMech.getBoardSizeX())+1; // generates random positions
-        randY = (rand() % FoodMech.getBoardSizeY())+1;
+        randX = (rand() % mainGameMechsRef->getBoardSizeX())+1; // generates random positions
+        randY = (rand() % mainGameMechsRef->getBoardSizeY())+1;
     }while(randX == blockOff.x && randY == blockOff.y);
     
     
@@ -25,7 +26,22 @@ void Food::generateFood(objPos blockOff)
 
 void Food::getFoodPos(objPos &returnPos)
 {
-    returnPos.x = this.x;
-    returnPos.y = this.y;
+    returnPos.x = foodPos.x;
+    returnPos.y = foodPos.y;
 
+}
+
+int Food::getFoodX()
+{
+    return foodPos.x;
+}
+
+int Food::getFoodY()
+{
+    return foodPos.y;
+}
+
+char Food::getFoodSymbol()
+{
+    return foodPos.symbol;
 }
