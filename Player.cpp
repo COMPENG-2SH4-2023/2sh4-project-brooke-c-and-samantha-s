@@ -47,6 +47,9 @@ void Player::updatePlayerDir()
             if(myDir != UP)
                 myDir = DOWN;
             break;  
+        case ' ':
+            mainGameMechsRef->setExitTrue();
+            break;
         default:
             break;
     }

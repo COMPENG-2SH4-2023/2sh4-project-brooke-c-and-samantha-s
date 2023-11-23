@@ -12,7 +12,7 @@ using namespace std;
 GameMechs* myGM;
 
 objPos playerPos;
-objPos* myPlayer;
+Player* myPlayer;
 
 void Initialize(void);
 void GetInput(void);
@@ -47,13 +47,19 @@ void Initialize(void)
     MacUILib_clearScreen();
 
     myGM = new GameMechs(30 , 15);
-    //myPlayer = new Player(myGM);
+    myPlayer = new Player(myGM);
+    playerPos.setObjPos(15, 7, '*');
  
 }
 
 void GetInput(void)
 {
 
+}
+
+void RunLogic(void)
+{
+    
 }
 
 void DrawScreen(void)
