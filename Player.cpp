@@ -1,5 +1,7 @@
 #include "Player.h"
 #include "GameMechs.h"
+#include "objPos.h"
+#include <iostream>
 
 
 Player::Player(GameMechs* thisGMRef)
@@ -8,14 +10,14 @@ Player::Player(GameMechs* thisGMRef)
     myDir = STOP;
 
     // more actions to be included
-    playerPos.setObjPos(15, 10, '*');
+    playerPos.setObjPos(15, 7, '*');
 }
 
 
 Player::~Player()
 {
     // delete any heap members here
-    //delete myPlayer;
+    //delete Player;
 }
 
 void Player::getPlayerPos(objPos &returnPos)
@@ -24,10 +26,14 @@ void Player::getPlayerPos(objPos &returnPos)
     returnPos.setObjPos(playerPos.x, playerPos.y, playerPos.symbol);
 }
 
+
+
 void Player::updatePlayerDir()
 {
     // PPA3 input processing logic  
     char input = mainGameMechsRef->getInput();
+
+    cout << input << endl;
 
     switch(input)
     {
@@ -50,6 +56,7 @@ void Player::updatePlayerDir()
         default:
             break;
     }
+    cout << myDir << endl;
 }
 
 void Player::movePlayer()

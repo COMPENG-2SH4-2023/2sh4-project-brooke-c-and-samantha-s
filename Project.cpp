@@ -12,7 +12,8 @@ using namespace std;
 GameMechs* myGM;
 
 objPos playerPos;
-objPos* myPlayer;
+
+Player* myPlayer;
 
 void Initialize(void);
 void GetInput(void);
@@ -20,7 +21,6 @@ void RunLogic(void);
 void DrawScreen(void);
 void LoopDelay(void);
 void CleanUp(void);
-
 
 
 int main(void)
@@ -47,13 +47,22 @@ void Initialize(void)
     MacUILib_clearScreen();
 
     myGM = new GameMechs(30 , 15);
-    //myPlayer = new Player(myGM);
+
+    playerPos.setObjPos(15, 7, '*');
+
+    myPlayer = new Player(myGM);
  
 }
 
 void GetInput(void)
 {
+    
+}
 
+void RunLogic(void)
+{
+    myPlayer->updatePlayerDir();
+    myPlayer->movePlayer();
 }
 
 void DrawScreen(void)
@@ -68,7 +77,6 @@ void DrawScreen(void)
                 MacUILib_printf("%c", '#');
             else    
                 MacUILib_printf("%c", ' ');
-            
         }
         MacUILib_printf("\n");
     }
@@ -87,7 +95,7 @@ void CleanUp(void)
     MacUILib_uninit();
 
     //~GameMechs();
-    delete myGM;
+    //delete myGM;
     //~Player();
-    delete myPlayer;
+    //delete myPlayer;
 }
