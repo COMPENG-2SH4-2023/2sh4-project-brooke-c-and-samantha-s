@@ -17,7 +17,4 @@ class FOOD_H
 }
 
 
-
-
-
 #endif FOOD_H
