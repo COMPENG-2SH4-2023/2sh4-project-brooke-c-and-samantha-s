@@ -3,7 +3,7 @@
 
 #include "objPos.h"
 
-class FOOD_H
+class Food
 {
     private:
         objPos foodPos;
@@ -15,7 +15,6 @@ class FOOD_H
         generateFood(objPos blockOff);
         getFoodPos(objPos &returnPos);
 }
-
 
 
 
