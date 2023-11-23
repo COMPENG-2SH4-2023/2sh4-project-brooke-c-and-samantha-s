@@ -46,8 +46,6 @@ void Player::updatePlayerDir()
     // PPA3 input processing logic  
     char input = mainGameMechsRef->getInput();
 
-    cout << input << endl;
-
     switch(input)
     {
         case 'a':
@@ -72,7 +70,6 @@ void Player::updatePlayerDir()
         default:
             break;
     }
-    cout << myDir << endl;
 }
 
 void Player::movePlayer()
