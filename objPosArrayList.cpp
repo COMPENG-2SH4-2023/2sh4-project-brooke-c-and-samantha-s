@@ -1,5 +1,4 @@
 #include "objPosArrayList.h"
-#include <iostream>
 
 // Paste your CUTE Tested implementation here.
 // Paste your CUTE Tested implementation here.
@@ -27,10 +26,10 @@ int objPosArrayList::getSize()
 
 void objPosArrayList::insertHead(objPos thisPos)
 {
-    if(sizeList == sizeArray){
-        cout << "Cannot insert, list is FULL." << endl;
-        return;
-    }
+    // if(sizeList == sizeArray){
+    //     cout << "Cannot insert, list is FULL." << endl;
+    //     return;
+    // }
 
     for(int i = sizeList; i > 0; i --)
         aList[i] = aList[i-1];
@@ -41,20 +40,20 @@ void objPosArrayList::insertHead(objPos thisPos)
 
 void objPosArrayList::insertTail(objPos thisPos)
 {
-    if(sizeList == sizeArray){
-        cout << "Cannot insert, list is FULL." << endl;
-        return;
-    }
+    // if(sizeList == sizeArray){
+    //     cout << "Cannot insert, list is FULL." << endl;
+    //     return;
+    // }
 
     aList[sizeList++] = thisPos;
 }
 
 void objPosArrayList::removeHead()
 {
-    if(sizeList == sizeArray){
-        cout << "Cannot remove, list is EMPTY." << endl;
-        return;
-    }
+    // if(sizeList == sizeArray){
+    //     cout << "Cannot remove, list is EMPTY." << endl;
+    //     return;
+    // }
 
     for(int i = 0; i < sizeList - 1; i++)
         aList[i] = aList[i+1];
@@ -64,40 +63,40 @@ void objPosArrayList::removeHead()
 
 void objPosArrayList::removeTail()
 {
-    if(sizeList == sizeArray){
-        cout << "Cannot remove, list is EMPTY." << endl;
-        return;
-    }
+    // if(sizeList == sizeArray){
+    //     cout << "Cannot remove, list is EMPTY." << endl;
+    //     return;
+    // }
 
     sizeList--;
 }
 
 void objPosArrayList::getHeadElement(objPos &returnPos)
 {
-    if(sizeList == sizeArray){
-        cout << "Cannot get element, list is EMPTY." << endl;
-        return;
-    }
+    // if(sizeList == sizeArray){
+    //     cout << "Cannot get element, list is EMPTY." << endl;
+    //     return;
+    // }
 
     returnPos = aList[0];
 }
 
 void objPosArrayList::getTailElement(objPos &returnPos)
 {
-    if(sizeList == sizeArray){
-        cout << "Cannot get element, list is EMPTY." << endl;
-        return;
-    }
+    // if(sizeList == sizeArray){
+    //     cout << "Cannot get element, list is EMPTY." << endl;
+    //     return;
+    // }
 
     returnPos = aList[sizeList-1];
 }
 
 void objPosArrayList::getElement(objPos &returnPos, int index)
 {
-    if(sizeList == 0 || index < 0 | index >= sizeList){
-        cout << "Cannot retreive element, index out of bounds."
-        return;
-    }
+    // if(sizeList == 0 || index < 0 | index >= sizeList){
+    //     cout << "Cannot retreive element, index out of bounds."
+    //     return;
+    // }
 
     returnPos = aList[index];
 }

@@ -3,7 +3,7 @@
 
 #include "objPos.h"
 
-class FOOD_H
+class Food
 {
     private:
         objPos foodPos;
