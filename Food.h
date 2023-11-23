@@ -7,6 +7,9 @@ class Food
 {
     private:
         objPos foodPos;
+        GameMechs *FoodMech;
+        int randX;
+        int randY;
 
     public:
         Food();
