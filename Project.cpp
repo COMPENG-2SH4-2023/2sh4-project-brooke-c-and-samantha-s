@@ -47,7 +47,7 @@ void Initialize(void)
 
     myGM = new GameMechs(30 , 15);
     
-    playerPos.setObjPos(15, 7, '*');
+    //playerPos.setObjPos(15, 7, '*');
     myPlayer = new Player(myGM);
  
 }
@@ -71,8 +71,8 @@ void DrawScreen(void)
 
     for(int i=0; i < myGM->getBoardSizeY(); i++){
         for(int j=0; j < myGM->getBoardSizeX(); j++){
-            if(i == playerPos.y && j == playerPos.x)
-                MacUILib_printf("%c", playerPos.symbol);
+            if(i == myPlayer->getPlayerY() && j == myPlayer->getPlayerX())
+                MacUILib_printf("%c", myPlayer->getPlayerS());
             else if(i==0 || i==myGM->getBoardSizeY()-1 || j==0 || j==myGM->getBoardSizeX()-1)
                 MacUILib_printf("%c", '#');
             else    

@@ -20,6 +20,12 @@ class Player
         ~Player();
 
         void getPlayerPos(objPos &returnPos); // Upgrade this in iteration 3.
+
+        // added functions
+        int getPlayerX();
+        int getPlayerY();
+        char getPlayerS();
+        
         void updatePlayerDir();
         void movePlayer();
 

@@ -26,6 +26,20 @@ void Player::getPlayerPos(objPos &returnPos)
     returnPos.setObjPos(playerPos.x, playerPos.y, playerPos.symbol);
 }
 
+int Player::getPlayerX()
+{
+    return playerPos.x;
+}
+
+int Player::getPlayerY()
+{
+    return playerPos.y;
+}
+
+char Player::getPlayerS()
+{
+    return playerPos.symbol;
+}
 
 void Player::updatePlayerDir()
 {
