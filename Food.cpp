@@ -5,8 +5,7 @@
 Food::Food(GameMechs* thisGMRef)
 {
     mainGameMechsRef = thisGMRef;
-    foodPos.setObjPos(randX, randY, 'x');
-
+    //foodPos.setObjPos(2, 2, 'x');
 }
 
 Food::~Food()
@@ -21,14 +20,13 @@ void Food::generateFood(objPos blockOff)
         randY = (rand() % mainGameMechsRef->getBoardSizeY())+1;
     }while(randX == blockOff.x && randY == blockOff.y);
     
-    
+    foodPos.setObjPos(randX, randY, 'x');
 }
 
 void Food::getFoodPos(objPos &returnPos)
 {
     returnPos.x = foodPos.x;
     returnPos.y = foodPos.y;
-
 }
 
 int Food::getFoodX()

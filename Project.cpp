@@ -62,6 +62,7 @@ void RunLogic(void)
 {
     myPlayer->updatePlayerDir();
     myPlayer->movePlayer();
+    myFood->generateFood(playerPos);
 
 }
 
@@ -97,8 +98,6 @@ void CleanUp(void)
   
     MacUILib_uninit();
 
-    //~GameMechs();
-    //delete myGM;
-    //~Player();
-    //delete myPlayer;
+    myGM->~GameMechs();
+    myPlayer->~Player();
 }
