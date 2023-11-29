@@ -17,16 +17,16 @@ void Food::generateFood(objPosArrayList* blockOff) // needs to be changed
 {
     objPos element;
 
-    randX = (rand() % mainGameMechsRef->getBoardSizeX())+1; // generates random positions
-    randY = (rand() % mainGameMechsRef->getBoardSizeY())+1;
+    randX = (rand() % (mainGameMechsRef->getBoardSizeX()-2))+1; // generates random positions
+    randY = (rand() % (mainGameMechsRef->getBoardSizeY()-2))+1;
     
     for(int i = 0; i < blockOff->getSize(); i++){
         
         blockOff->getElement(element, i);
 
         if(randX == element.x && randY == element.y){
-            randX = (rand() % mainGameMechsRef->getBoardSizeX())+1; 
-            randY = (rand() % mainGameMechsRef->getBoardSizeY())+1;
+            randX = (rand() % (mainGameMechsRef->getBoardSizeX()-2))+1; 
+            randY = (rand() % (mainGameMechsRef->getBoardSizeY()-2))+1;
             i--;
         }
     }
