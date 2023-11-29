@@ -4,6 +4,7 @@
 #include "GameMechs.h"
 #include "Player.h"
 #include "Food.h"
+#include "objPosArrayList.h"
 
 using namespace std;
 
@@ -11,8 +12,8 @@ using namespace std;
 
 GameMechs* myGM;
 
-objPos playerPos;
 Player* myPlayer;
+objPosArrayList* playerPosList;
 
 Food* myFood;
 
@@ -47,10 +48,10 @@ void Initialize(void)
     MacUILib_init();
     MacUILib_clearScreen();
 
-    myGM = new GameMechs(30 , 15);
-    
-    myPlayer = new Player(myGM);
+    myGM = new GameMechs(30, 15);
     myFood = new Food(myGM);
+
+    myPlayer = new Player(myGM, myFood);
 }
 
 void GetInput(void)
@@ -62,19 +63,33 @@ void RunLogic(void)
 {
     myPlayer->updatePlayerDir();
     myPlayer->movePlayer();
-    myFood->generateFood(playerPos);
-
 }
 
 void DrawScreen(void)
 {
     MacUILib_clearScreen(); 
-    
+
+    bool draw;
+
+    objPosArrayList* playerBody = myPlayer->getPlayerPos();
+    objPos tempBody;
+
 
     for(int i=0; i < myGM->getBoardSizeY(); i++){
         for(int j=0; j < myGM->getBoardSizeX(); j++){
-            if(i == myPlayer->getPlayerY() && j == myPlayer->getPlayerX())
-                MacUILib_printf("%c", myPlayer->getPlayerS());
+            draw = false;
+
+            for(int k = 0; k < playerBody->getSize(); k++){
+                playerBody->getElement(tempBody, k);
+                if(j == tempBody.x && i == tempBody.y){
+                    MacUILib_printf("%c", tempBody.symbol);
+                    draw = true;
+                    break;
+                }
+            }
+
+            if(draw) continue;
+
             else if(i == myFood->getFoodY() && j == myFood->getFoodX())
                 MacUILib_printf("%c", myFood->getFoodSymbol());
             else if(i==0 || i==myGM->getBoardSizeY()-1 || j==0 || j==myGM->getBoardSizeX()-1)
@@ -84,8 +99,10 @@ void DrawScreen(void)
         }
         MacUILib_printf("\n");
     }
-}
 
+    MacUILib_printf("Score: %d", myGM->getScore());
+}
+ 
 void LoopDelay(void)
 {
     MacUILib_Delay(DELAY_CONST); // 0.1s delay
@@ -100,4 +117,5 @@ void CleanUp(void)
 
     myGM->~GameMechs();
     myPlayer->~Player();
+    delete myFood;
 }
