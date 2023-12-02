@@ -47,7 +47,29 @@ char Player::getPlayerS()
     return headPos.symbol;
 }
 
+bool Player::checkSelfCollision()
+{
+    objPos currHead;
+    playerPosList->getHeadElement(currHead);
 
+    for(int i = 1; i < playerPosList->getSize(); i++)
+    {
+        playerPosList->getElement(headPos, i);
+        if(currHead.x == headPos.x && currHead.y == headPos.y)
+            return true;
+    }
+    return false;
+}
+
+bool Player::checkFoodConsumption()
+{
+    objPos currHead;
+    playerPosList->getHeadElement(currHead);
+
+    if(currHead.x == food->getFoodX() && currHead.y == food->getFoodY())
+        return true;
+    return false;
+}
 
 void Player::updatePlayerDir()
 {
