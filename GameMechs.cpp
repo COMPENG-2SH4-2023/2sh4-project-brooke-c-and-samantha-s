@@ -35,6 +35,11 @@ bool GameMechs::getExitFlagStatus()
     return exitFlag;
 }
 
+bool GameMechs::getLoseFlag()
+{
+    return loseFlag;
+}
+
 char GameMechs::getInput()
 {
     if(MacUILib_hasChar())
@@ -62,6 +67,11 @@ int GameMechs::getScore()
 void GameMechs::setExitTrue()
 {
     exitFlag = true;
+}
+
+void GameMechs::setLoseTrue()
+{
+    loseFlag = true;
 }
 
 void GameMechs::setInput(char this_input)
