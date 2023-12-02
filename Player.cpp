@@ -3,6 +3,7 @@
 #include "objPos.h"
 #include <iostream>
 #include "Food.h"
+#include "objPosArrayList.h"
 
 
 Player::Player(GameMechs* thisGMRef, Food* foodRef)
@@ -113,6 +114,15 @@ void Player::movePlayer()
             break;
     }
 
+    for(int i = 1; i < playerPosList->getSize(); i++)
+    {
+        playerPosList->getElement(headPos, i);
+        if(currHead.x == headPos.x && currHead.y == headPos.y){
+            mainGameMechsRef->setExitTrue();
+            mainGameMechsRef->setLoseTrue();
+            }
+    }
+    
     // new current head should be inserted to head of list, then remove tail
     if(currHead.x == food->getFoodX() && currHead.y == food->getFoodY()){
         playerPosList->insertHead(currHead);

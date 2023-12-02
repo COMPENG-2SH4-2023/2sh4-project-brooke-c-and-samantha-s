@@ -31,7 +31,7 @@ class Player
         void movePlayer();
 
     private:
-        objPos headPos;   // Upgrade this in iteration 3.       
+        objPos headPos;   // Upgrade this in iteration 3.    
         enum Dir myDir;
         objPosArrayList* playerPosList;
 

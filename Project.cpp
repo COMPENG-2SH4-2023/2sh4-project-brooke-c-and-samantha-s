@@ -100,7 +100,13 @@ void DrawScreen(void)
         MacUILib_printf("\n");
     }
 
-    MacUILib_printf("Score: %d", myGM->getScore());
+    MacUILib_printf("Score: %d\n", myGM->getScore());
+    if(myGM->getLoseFlag())
+    {
+        MacUILib_clearScreen();
+        MacUILib_printf("You Lost! \nYour final score was: %d", myGM->getScore());
+    }
+        
 }
  
 void LoopDelay(void)
@@ -111,7 +117,7 @@ void LoopDelay(void)
 
 void CleanUp(void)
 {
-    MacUILib_clearScreen();    
+    //MacUILib_clearScreen();    
   
     MacUILib_uninit();
 
