@@ -26,6 +26,9 @@ class Player
         int getPlayerX();
         int getPlayerY();
         char getPlayerS();
+        bool checkSelfCollision();
+        bool checkFoodConsumption();
+        
         
         void updatePlayerDir();
         void movePlayer();
