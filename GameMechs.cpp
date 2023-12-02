@@ -64,6 +64,11 @@ int GameMechs::getScore()
     return score;
 }
 
+void GameMechs::addToScore(int i)
+{
+    score += i;
+}
+
 void GameMechs::setExitTrue()
 {
     exitFlag = true;

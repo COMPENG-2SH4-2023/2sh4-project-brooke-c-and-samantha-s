@@ -46,6 +46,11 @@ char objPos::getSymbol()
     return symbol;
 }
 
+void objPos::setObjSymbol(char c)
+{
+    symbol = c;
+}
+
 bool objPos::isPosEqual(const objPos* refPos)
 {
     return (refPos->x == x && refPos->y == y);

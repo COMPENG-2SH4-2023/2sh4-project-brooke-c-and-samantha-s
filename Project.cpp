@@ -52,6 +52,8 @@ void Initialize(void)
     myFood = new Food(myGM);
 
     myPlayer = new Player(myGM, myFood);
+
+    myFood->generateFood(myPlayer->getPlayerPos());
 }
 
 void GetInput(void)
@@ -72,11 +74,13 @@ void DrawScreen(void)
     bool draw;
 
     objPosArrayList* playerBody = myPlayer->getPlayerPos();
-    objPos tempBody;
+    objPos tempBody, tempFood;
+    objPosArrayList* foodList = myFood->getFoodList();
 
 
     for(int i=0; i < myGM->getBoardSizeY(); i++){
         for(int j=0; j < myGM->getBoardSizeX(); j++){
+            
             draw = false;
 
             for(int k = 0; k < playerBody->getSize(); k++){
@@ -90,17 +94,30 @@ void DrawScreen(void)
 
             if(draw) continue;
 
-            else if(i == myFood->getFoodY() && j == myFood->getFoodX())
-                MacUILib_printf("%c", myFood->getFoodSymbol());
-            else if(i==0 || i==myGM->getBoardSizeY()-1 || j==0 || j==myGM->getBoardSizeX()-1)
+            for(int m = 0; m < foodList->getSize(); m++){
+                foodList->getElement(tempFood, m);
+                if(j == tempFood.x && i == tempFood.y){
+                    MacUILib_printf("%c", tempFood.symbol);
+                    draw = true;
+                    break;
+                }
+            }
+
+            if(draw) continue;
+
+            if(i==0 || i==myGM->getBoardSizeY()-1 || j==0 || j==myGM->getBoardSizeX()-1)
                 MacUILib_printf("%c", '#');
             else    
                 MacUILib_printf("%c", ' ');
+
         }
         MacUILib_printf("\n");
+    
     }
 
     MacUILib_printf("Score: %d\n", myGM->getScore());
+    MacUILib_printf("Eat the '+' to gain 3 pts\nEat the '-' to lose 3 pts");
+    
     if(myGM->getLoseFlag())
     {
         MacUILib_clearScreen();

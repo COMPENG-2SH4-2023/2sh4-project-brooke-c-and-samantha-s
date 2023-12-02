@@ -8,6 +8,7 @@ class Food
 {
     private:
         objPos foodPos;
+        objPosArrayList* foodBucket;
         int randX;
         int randY;
 
@@ -19,6 +20,7 @@ class Food
 
         void generateFood(objPosArrayList* blockOff);
         void getFoodPos(objPos &returnPos);
+        objPosArrayList* getFoodList();
 
         int getFoodX();
         int getFoodY();

@@ -71,6 +71,11 @@ void objPosArrayList::removeTail()
     sizeList--;
 }
 
+void objPosArrayList::clearList()
+{
+    sizeList = 0;
+}
+
 void objPosArrayList::getHeadElement(objPos &returnPos)
 {
     // if(sizeList == sizeArray){

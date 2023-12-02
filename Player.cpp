@@ -61,14 +61,18 @@ bool Player::checkSelfCollision()
     return false;
 }
 
-bool Player::checkFoodConsumption()
+int Player::checkFoodConsumption()
 {
-    objPos currHead;
+    objPos currHead, tempFood;
     playerPosList->getHeadElement(currHead);
+    objPosArrayList* foodList = food->getFoodList();
 
-    if(currHead.x == food->getFoodX() && currHead.y == food->getFoodY())
-        return true;
-    return false;
+    for(int i = 0; i < foodList->getSize(); i++){
+        foodList->getElement(tempFood, i);
+        if(currHead.x == tempFood.x && currHead.y == tempFood.y)
+            return i;
+    }
+    return -1;
 }
 
 void Player::updatePlayerDir()
@@ -143,10 +147,18 @@ void Player::movePlayer()
         mainGameMechsRef->setExitTrue();
         mainGameMechsRef->setLoseTrue();
     }
-    if(checkFoodConsumption()){
+    int x = checkFoodConsumption();
+    if(x >= 0){
         playerPosList->insertHead(currHead);
         food->generateFood(playerPosList);
-        mainGameMechsRef->incrementScore();
+        if(x == 3){
+            mainGameMechsRef->addToScore(3);
+        }
+        else if(x == 4){
+            mainGameMechsRef->addToScore(-3);
+        }
+        else
+            mainGameMechsRef->incrementScore();
     }
     
     // new current head should be inserted to head of list, then remove tail
