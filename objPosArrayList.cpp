@@ -77,7 +77,7 @@ void objPosArrayList::getHeadElement(objPos &returnPos)
     //     cout << "Cannot get element, list is EMPTY." << endl;
     //     return;
     // }
-
+    
     returnPos = aList[0];
 }
 
